@@ -9,19 +9,61 @@ function render(variables = {}) {
   // if includeCover==false then we reset the cover code without the <img> tag to make the cover transparent.
   let cover = `<div class="cover"><img src="${variables.background}" /></div>`;
   if (variables.includeCover == false) cover = "<div class='cover'></div>";
+  let name = variables.name;
+  let lastname = variables.lastname;
+  if (variables.name == null) {
+    name = "Lucy";
+  }
+  if (variables.lastname == null) {
+    lastname = "Boilett";
+  }
+  let city = variables.city;
+  if (variables.city == null) {
+    city = "Miami";
+  }
 
+  if (variables.country == null) {
+    variables.country = "USA";
+  }
+
+  if (variables.twitter == null) {
+    variables.twitter = " ";
+  }
+  if (variables.socialMediaPosition == null) {
+    variables.socialMediaPosition = "position-right";
+  }
+  if (variables.github == null) {
+    variables.github = "alesanchezr";
+  }
+  if (variables.linkedin == null) {
+    variables.linkedin = "alesanchezr";
+  }
+  if (variables.instagram == null) {
+    variables.instagram = "alesanchezr";
+  }
+  if (variables.role == null) {
+    variables.role = "Web developer";
+  }
   // reset the website body with the new html output
   document.querySelector("#widget_content").innerHTML = `<div class="widget">
             ${cover}
           <img src="${variables.avatarURL}" class="photo" />
-          <h1>Lucy Boilett</h1>
-          <h2>Web Developer</h2>
-          <h3>Miami, USA</h3>
-          <ul class="position-right">
-            <li><a href="https://twitter.com/alesanchezr"><i class="fa fa-twitter"></i></a></li>
-            <li><a href="https://github.com/alesanchezr"><i class="fa fa-github"></i></a></li>
-            <li><a href="https://linkedin.com/alesanchezr"><i class="fa fa-linkedin"></i></a></li>
-            <li><a href="https://instagram.com/alesanchezr"><i class="fa fa-instagram"></i></a></li>
+          <h1>${name} ${lastname}</h1>
+          <h2>Web Developer${variables.role}</h2>
+          <h3>${city} ${variables.country}</h3>
+          <ul class="${variables.socialMediaPosition}">
+            <li><a href="https://twitter.com/${
+              variables.twitter
+            }"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="https://github.com/${
+              variables.github
+            }"><i class="fa fa-github"></i></a></li>
+            <li><a href="https://linkedin.com/in/${
+              variables.linkedin
+            }"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="https://instagram.com/${
+              variables.instagram
+            }"><i class="fa fa-instagram"></i></a></li>
           </ul>
         </div>
     `;
